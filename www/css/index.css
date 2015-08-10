@@ -72,8 +72,6 @@ body {
 }
 
 .bubble {
-  -webkit-animation: ball .55s ease-in infinite alternate;
-          animation: ball .55s ease-in infinite alternate;
   background: no-repeat scroll left top #ccc;
   background-size: 100%;
   border-radius: 50%;
@@ -95,11 +93,15 @@ body {
 .bubble.blue {
   background-image: url('../img/f-jumpBall-b.png');
 }
-.bubble.slow {
+.bubble.ball {
+  -webkit-animation: ball .55s ease-in infinite alternate;
+          animation: ball .55s ease-in infinite alternate;
+}
+.bubble.ball.slow {
   -webkit-animation-duration: .7s;
           animation-duration: .7s;
 }
-.bubble.fast {
+.bubble.ball.fast {
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
 }
