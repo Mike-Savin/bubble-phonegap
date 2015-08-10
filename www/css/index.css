@@ -86,10 +86,10 @@ body {
   margin-left: -25px;
 }
 .bubble.red {
-  background-image: url('../img/f-jumpBall-r.png');
+  background-image: url('../img/f-jumpBall-b.png');
 }
 .bubble.green {
-  background-image: url('../img/f-jumpBall-g.png');
+  background-image: url('../img/f-jumpBall-b.png');
 }
 .bubble.blue {
   background-image: url('../img/f-jumpBall-b.png');
