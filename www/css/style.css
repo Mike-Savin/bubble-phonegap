@@ -1,7 +1,7 @@
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -9,7 +9,7 @@ body {
   padding: 0;
 }
 
-.container {
+.container, .container-flex {
   bottom: 0;
   left: 50px;
   position: absolute;
@@ -17,35 +17,56 @@ body {
   top: 50px;
 }
 
-.container.flex {
-    -webkit-box-align: end;
-    -webkit-align-items: flex-end;
-    display: -webkit-box;
-    display: -webkit-flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    left: 0;
-    top: 0;
+.container-flex {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  left: 0;
+  top: 0;
 }
 
-.bubble-container {
-    -webkit-animation: container .9s linear infinite alternate;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    left: 0;
-    position: relative;
-    right: 0;
+.container-flex .bubble-container {
+  -webkit-animation: container .9s linear infinite alternate;
+          animation: container .9s linear infinite alternate;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  left: 0;
+  position: relative;
+  right: 0;
 }
 
-.bubble-container.slow {
+.container-flex .bubble-container:nth-child(2),
+.container-flex .bubble-container:nth-child(5),
+.container-flex .bubble-container:nth-child(7),
+.container-flex .bubble-container:nth-child(8),
+.container-flex .bubble-container:nth-child(11) {
   -webkit-animation-duration: 1.1s;
+          animation-duration: 1.1s;
 }
 
-.bubble-container.fast {
+.container-flex .bubble-container:nth-child(3),
+.container-flex .bubble-container:nth-child(4),
+.container-flex .bubble-container:nth-child(6),
+.container-flex .bubble-container:nth-child(9),
+.container-flex .bubble-container:nth-child(12) {
   -webkit-animation-duration: .8s;
+          animation-duration: .8s;
 }
 
 @-webkit-keyframes container {
@@ -57,77 +78,126 @@ body {
   }
 }
 
+@keyframes container {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0;
+  }
+}
+
 .bubble {
-  -webkit-animation: ball .55s ease-in infinite alternate;
+  background: scroll none top left no-repeat;
+  background-size: 100% 100%;
   bottom: 0;
   height: 50px;
   position: absolute;
   width: 50px;
 }
 
-.flex .bubble {
+.container-flex .bubble {
+  -webkit-animation: ball .55s ease-in infinite alternate;
+          animation: ball .55s ease-in infinite alternate;
   left: 50%;
   margin-left: -25px;
 }
 
-.bubble.red {
+.container .bubble-container:nth-child(2) .bubble,
+.container .bubble-container:nth-child(4) .bubble,
+.container .bubble-container:nth-child(9) .bubble,
+.container .bubble-container:nth-child(10) .bubble,
+.container-flex .bubble-container:nth-child(5) .bubble,
+.container-flex .bubble-container:nth-child(8) .bubble,
+.container-flex .bubble-container:nth-child(10) .bubble,
+.container-flex .bubble-container:nth-child(12) .bubble {
   background-image: url('../images/f-jumpBall-r.png');
 }
 
-.bubble.green {
+.container .bubble-container:nth-child(1) .bubble,
+.container .bubble-container:nth-child(5) .bubble,
+.container .bubble-container:nth-child(6) .bubble,
+.container-flex .bubble-container:nth-child(1) .bubble,
+.container-flex .bubble-container:nth-child(3) .bubble,
+.container-flex .bubble-container:nth-child(6) .bubble,
+.container-flex .bubble-container:nth-child(7) .bubble {
   background-image: url('../images/f-jumpBall-g.png');
 }
 
-.bubble.blue {
+.container .bubble-container:nth-child(3) .bubble,
+.container .bubble-container:nth-child(7) .bubble,
+.container .bubble-container:nth-child(8) .bubble,
+.container-flex .bubble-container:nth-child(2) .bubble,
+.container-flex .bubble-container:nth-child(4) .bubble,
+.container-flex .bubble-container:nth-child(9) .bubble,
+.container-flex .bubble-container:nth-child(11) .bubble {
   background-image: url('../images/f-jumpBall-b.png');
 }
 
-.bubble.slow {
+.container-flex .bubble-container:nth-child(2) .bubble,
+.container-flex .bubble-container:nth-child(7) .bubble,
+.container-flex .bubble-container:nth-child(9) .bubble,
+.container-flex .bubble-container:nth-child(12) .bubble  {
   -webkit-animation-duration: .7s;
+          animation-duration: .7s;
 }
 
-.bubble.fast {
+.container-flex .bubble-container:nth-child(3) .bubble,
+.container-flex .bubble-container:nth-child(5) .bubble,
+.container-flex .bubble-container:nth-child(6) .bubble,
+.container-flex .bubble-container:nth-child(11) .bubble  {
   -webkit-animation-duration: .4s;
+          animation-duration: .4s;
 }
 
-.bubble.ball1 {
+.container .bubble-container:nth-child(1) .bubble {
   -webkit-animation: topBottom 10s linear infinite, leftRight 8s linear infinite;
+          animation: topBottom 10s linear infinite, leftRight 8s linear infinite;
 }
 
-.bubble.ball2 {
+.container .bubble-container:nth-child(2) .bubble {
   -webkit-animation: topBottom 4.6s linear infinite, leftRight 5.4s linear infinite;
+          animation: topBottom 4.6s linear infinite, leftRight 5.4s linear infinite;
 }
 
-.bubble.ball3 {
+.container .bubble-container:nth-child(3) .bubble {
   -webkit-animation: topBottom 4.1s linear infinite, leftRightInverse 6s linear infinite;
+          animation: topBottom 4.1s linear infinite, leftRightInverse 6s linear infinite;
 }
 
-.bubble.ball4 {
+.container .bubble-container:nth-child(4) .bubble {
   -webkit-animation: topBottom 4.4s linear infinite, leftRightInverse 4.8s linear infinite;
+          animation: topBottom 4.4s linear infinite, leftRightInverse 4.8s linear infinite;
 }
 
-.bubble.ball5 {
+.container .bubble-container:nth-child(5) .bubble {
   -webkit-animation: topBottomInverse 6.7s linear infinite, leftRightInverse 6.4s linear infinite;
+          animation: topBottomInverse 6.7s linear infinite, leftRightInverse 6.4s linear infinite;
 }
 
-.bubble.ball6 {
+.container .bubble-container:nth-child(6) .bubble {
   -webkit-animation: topBottomInverse 8s linear infinite, leftRightInverse 7.4s linear infinite;
+          animation: topBottomInverse 8s linear infinite, leftRightInverse 7.4s linear infinite;
 }
 
-.bubble.ball7 {
+.container .bubble-container:nth-child(7) .bubble {
   -webkit-animation: topBottomInverse 6.6s linear infinite, leftRight 5.4s linear infinite;
+          animation: topBottomInverse 6.6s linear infinite, leftRight 5.4s linear infinite;
 }
 
-.bubble.ball8 {
+.container .bubble-container:nth-child(8) .bubble {
   -webkit-animation: topBottomInverse 5s linear infinite, leftRight 7.2s linear infinite;
+          animation: topBottomInverse 5s linear infinite, leftRight 7.2s linear infinite;
 }
 
-.bubble.ball9 {
+.container .bubble-container:nth-child(9) .bubble {
   -webkit-animation: topBottom 6.6s linear infinite, leftRight 5.4s linear infinite;
+          animation: topBottom 6.6s linear infinite, leftRight 5.4s linear infinite;
 }
 
-.bubble.ball10 {
+.container .bubble-container:nth-child(10) .bubble {
   -webkit-animation: topBottomInverse 5.8s linear infinite, leftRight 5.2s linear infinite;
+          animation: topBottomInverse 5.8s linear infinite, leftRight 5.2s linear infinite;
 }
 
 @-webkit-keyframes ball {
@@ -139,7 +209,46 @@ body {
   }
 }
 
+@keyframes ball {
+  from {
+    bottom: 70%;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
 @-webkit-keyframes leftRight {
+  0% {
+    right: 50%;
+  }
+  5% {
+    right: 100%;
+  }
+  10% {
+    right: 50%;
+  }
+  15% {
+    right: 0;
+  }
+  20% {
+    right: 50%;
+  }
+  27.5% {
+    right: 100%;
+  }
+  37.5% {
+    right: 50%;
+  }
+  50% {
+    right: 0;
+  }
+  100% {
+    right: 50%;
+  }
+}
+
+@keyframes leftRight {
   0% {
     right: 50%;
   }
@@ -199,6 +308,36 @@ body {
   }
 }
 
+@keyframes leftRightInverse {
+  0% {
+    right: 50%;
+  }
+  5% {
+    right: 0;
+  }
+  10% {
+    right: 50%;
+  }
+  15% {
+    right: 100%;
+  }
+  20% {
+    right: 50%;
+  }
+  27.5% {
+    right: 0;
+  }
+  37.5% {
+    right: 50%;
+  }
+  50% {
+    right: 100%;
+  }
+  100% {
+    right: 50%;
+  }
+}
+
 @-webkit-keyframes topBottom {
   0% {
     bottom: 50%;
@@ -229,7 +368,67 @@ body {
   }
 }
 
+@keyframes topBottom {
+  0% {
+    bottom: 50%;
+  }
+  5% {
+    bottom: 100%;
+  }
+  10% {
+    bottom: 50%;
+  }
+  15% {
+    bottom: 0;
+  }
+  20% {
+    bottom: 50%;
+  }
+  27.5% {
+    bottom: 100%;
+  }
+  37.5% {
+    bottom: 50%;
+  }
+  50% {
+    bottom: 0;
+  }
+  100% {
+    bottom: 50%;
+  }
+}
+
 @-webkit-keyframes topBottomInverse {
+  0% {
+    bottom: 50%;
+  }
+  5% {
+    bottom: 0;
+  }
+  10% {
+    bottom: 50%;
+  }
+  15% {
+    bottom: 100%;
+  }
+  20% {
+    bottom: 50%;
+  }
+  27.5% {
+    bottom: 0;
+  }
+  37.5% {
+    bottom: 50%;
+  }
+  50% {
+    bottom: 100%;
+  }
+  100% {
+    bottom: 50%;
+  }
+}
+
+@keyframes topBottomInverse {
   0% {
     bottom: 50%;
   }
