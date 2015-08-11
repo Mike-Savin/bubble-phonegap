@@ -18,23 +18,26 @@ body {
 }
 
 .container.flex {
-  display: -webkit-flex;
-  display: flex;
-  left: 0;
-  top: 0;
-
-  -webkit-align-items: flex-end;
-  -webkit-flex-direction: row;
-  -webkit-flex-grow: 1;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    left: 0;
+    top: 0;
 }
 
 .bubble-container {
-  left: 0;
-  position: relative;
-  right: 0;
-
-  -webkit-animation: container .9s linear infinite alternate;
-  -webkit-flex-grow: 1;
+    -webkit-animation: container .9s linear infinite alternate;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    left: 0;
+    position: relative;
+    right: 0;
 }
 
 .bubble-container.slow {
